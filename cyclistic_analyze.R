@@ -1,11 +1,15 @@
-#
-# ANALYZE PHASE
+# install packages and load it
+install.packages("tidyverse")
+install.packages("janitor")
+library(tidyverse)
+library(janitor)
 
+# import the tripsCombined_cleaned.csv file
 tripsCombined <- read.csv('tripsCombined_cleaned.csv')
 
 # I want to find the percentage of the riders type
 bikers <- tripsCombined %>% count(member_casual) %>% group_by(member_casual)
-print(bikers)_
+print(bikers)
 
 ggplot(bikers, aes(x = "", y = n/sum(n)*100, fill = member_casual)) +
   geom_col(color = 'white') +
